@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+
+.popover {
+  max-width: 200px; /* ou o tamanho que quiser */
+}

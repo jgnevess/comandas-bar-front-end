@@ -14,6 +14,7 @@ export interface LoginResponse {
     useRole?: string
     status: number
     message?: string
+    barId?: string
 }
 
 export interface TokenResponse {
@@ -44,7 +45,7 @@ const handleLoginRequest = async (username: string, password: string): Promise<L
             username: username,
             password: password
         });
-        return { status: 200, token: response.data.token, useRole: response.data.userRole }
+        return { status: 200, token: response.data.token, useRole: response.data.userRole, barId: response.data.barId }
     } catch (err) {
         const error = err as AxiosError;
 

@@ -46,6 +46,7 @@ const FormLogin = () => {
             }
             if(response.status == 200) {
                 localStorage.setItem('token', response.token!)
+                localStorage.setItem('barId', response.barId!)
                 
                 handleValidToken(response.token!).then(res => {
                     if(res.role === "ADMIN") window.location.href = '/admin'
@@ -65,7 +66,8 @@ const FormLogin = () => {
     return (
         <form onSubmit={handlerLogin} className="row w-100">
             <div className="col-7 d-flex flex-column justify-content-center align-items-center">
-                texto que ainda vou criar
+                <h1>Bem vindo de volta</h1>
+                <p>Faça login para continuar gerenciando seus pedidos e vendas com agilidade e segurança</p>
             </div>
             <div className="col-5 d-flex flex-column justify-content-center align-items-center border rounded">
                 <h2 className="fw-bold display-4">Login</h2>

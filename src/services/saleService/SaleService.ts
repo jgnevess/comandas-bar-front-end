@@ -5,7 +5,9 @@ import { ErrorRequest } from "../productService/productService";
 
 const apiUrl = process.env.REACT_APP_API_URL
 
-const pageSize = Math.floor((window.innerHeight / 100) + 1);
+const pageSize = Math.floor((window.innerHeight / 100) / 2 + 1);
+
+
 
 export interface Response {
     response: ErrorRequest | Sale | Page | SaleDetais
@@ -88,9 +90,11 @@ const handleSalesValue = async (): Promise<number | undefined> => {
     }
 }
 
-const handleSales = async (startDate: string, endDate: string, page: number, pageSize: number): Promise<Response> => {
+const handleSales = async (startDate: string, endDate: string, page: number): Promise<Response> => {
     const start = formatLocalDateTimeStart(startDate!);
     const end = formatLocalDateTimeEnd(endDate!);
+
+    console.log(pageSize)
 
     try {
         const response = await axios.get<Page>(`${apiUrl}/sale`, {

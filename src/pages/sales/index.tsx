@@ -27,27 +27,26 @@ const SalePage = () => {
         setEndDate(end);
 
         handleSalesValueBewteen(start, end)
-        .then(response => {
-            if(response) {
-                setTotalSales(response.toLocaleString("pt-br", { style: "currency", currency: "BRL" }))
-            }
-        })
+            .then(response => {
+                if (response) {
+                    setTotalSales(response.toLocaleString("pt-br", { style: "currency", currency: "BRL" }))
+                }
+            })
 
-        handleSales(start, end, sales?.page.number == undefined 
-            ? 0 
-            : sales?.page.number!, 
-            Math.floor(window.innerHeight/100) / 2).then((response) => {
+        handleSales(start, end, sales?.page.number == undefined
+            ? 0
+            : sales?.page.number!).then((response) => {
             if (response.status == 200) {
                 const data = response.response as Page
                 SetSales(data);
                 setTotalSalesUn(data.page.totalElements.toLocaleString())
-            } 
+            }
         });
         document.title = "Comandas - Vendas";
     }, []);
 
     const handleSalesRequest = () => {
-        handleSales(startDate!, endDate!, sales?.page.number == undefined ? 0 : sales?.page.number!, Math.floor(window.innerHeight/100) / 2).then((response) => {
+        handleSales(startDate!, endDate!, sales?.page.number == undefined ? 0 : sales?.page.number!).then((response) => {
             if (response.status == 200) {
                 const data = response.response as Page
                 SetSales(data);
@@ -57,15 +56,15 @@ const SalePage = () => {
         });
 
         handleSalesValueBewteen(startDate!, endDate!)
-        .then(response => {
-            if(response) {
-                setTotalSales(response.toLocaleString("pt-br", { style: "currency", currency: "BRL" }))
-            }
-        })
+            .then(response => {
+                if (response) {
+                    setTotalSales(response.toLocaleString("pt-br", { style: "currency", currency: "BRL" }))
+                }
+            })
     }
 
     const handleSalesPlus = () => {
-        handleSales(startDate!, endDate!, sales?.page.number! + 1, Math.floor(window.innerHeight/100) / 2).then((response) => {
+        handleSales(startDate!, endDate!, sales?.page.number! + 1).then((response) => {
             if (response.status == 200) {
                 const data = response.response as Page
                 SetSales(data);
@@ -75,7 +74,7 @@ const SalePage = () => {
     }
 
     const handleSalesMinus = () => {
-        handleSales(startDate!, endDate!, sales?.page.number! - 1, Math.floor(window.innerHeight/100) / 2).then((response) => {
+        handleSales(startDate!, endDate!, sales?.page.number! - 1).then((response) => {
             if (response.status == 200) {
                 const data = response.response as Page
                 SetSales(data);
